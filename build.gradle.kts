@@ -24,9 +24,14 @@ dependencies {
     compileOnly("net.kyori:adventure-text-serializer-legacy:4.9.2")
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+}
+
 val shadowTask = tasks.withType<ShadowJar> {
-    archiveClassifier.set("shadow")
+    archiveClassifier.set("")
     relocate("net.kyori", "me.clip.placeholderapi.libs.kyori")
+    relocate("me.lucyy.squirtgun", "net.lucypoulton.bracket.squirtgun")
     minimize()
     dependencies {
         exclude {
